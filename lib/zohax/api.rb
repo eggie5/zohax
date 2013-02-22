@@ -70,8 +70,8 @@ module Zohax
         raw = JSON.parse(self.class.get(url, :query => query).parsed_response)
         parse_raw_get(raw, entry)
       when :post
-        raw = JSON.parse(self.class.post(url, :body => query).parsed_response)
-        parse_raw_post(raw)
+        pr_hash = self.class.post(url, :body => query).parsed_response
+        parse_raw_post(pr_hash)
       else
         raise "#{http_method} is not a recognized http method"
       end
